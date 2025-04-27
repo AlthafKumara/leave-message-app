@@ -5,7 +5,7 @@ import 'package:ngl_app/services/url.dart' as url;
 
 class MessageServices {
   static Future<List<MessageModel>> getMessage() async {
-    var uri = await Uri.parse(url.BaseUrl + "/message/get");
+    var uri = await Uri.parse(url.BaseUrl + url.GetMessage);
     var response = await http.get(uri);
 
     if (response.statusCode == 200) {
@@ -21,7 +21,7 @@ class MessageServices {
   }
 
   static Future<bool> postMessage(String author, String messageContent) async {
-    var uri = await Uri.parse(url.BaseUrl + "/message/post");
+    var uri = await Uri.parse(url.BaseUrl + url.PostMessage);
     var response = await http.post(uri,
         headers: {
           'Content-Type': 'application/json',
